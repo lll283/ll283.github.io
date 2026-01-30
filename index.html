@@ -1,242 +1,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>LARP STAFF HANDBOOK</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0d1117;
-      color: white;
-    }
+<meta charset="UTF-8">
+<title>LARP Dashboard</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d1117;
+  color: white;
+}
 
-    .sidebar {
-      width: 220px;
-      height: 100vh;
-      background-color: #161b22;
-      position: fixed;
-      padding: 20px;
-    }
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  height: 100vh;
+  background-color: #161b22;
+  position: fixed;
+  padding: 20px;
+}
+.sidebar h2 { color: #58a6ff; }
+.sidebar a {
+  display: block;
+  color: #c9d1d9;
+  text-decoration: none;
+  margin: 12px 0;
+  cursor: pointer;
+}
+.sidebar a:hover { color: white; }
 
-    .sidebar h2 {
-      color: #58a6ff;
-    }
+.content { margin-left: 240px; padding: 30px; max-width: 1000px; }
+h1, h2 { color: #58a6ff; }
 
-    .sidebar a {
-      display: block;
-      color: #c9d1d9;
-      text-decoration: none;
-      margin: 12px 0;
-      cursor: pointer;
-    }
+/* Hero Banner */
+.dashboard-banner {
+  width: 100%;
+  height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 25px;
+  position: relative;
+}
+.dashboard-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+.dashboard-banner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #58a6ff;
+  font-size: 32px;
+}
 
-    .sidebar a:hover {
-      color: white;
-    }
+/* Ownership Team */
+.team-cards { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 15px; }
+.team-card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 15px;
+  width: 180px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.team-card:hover { background-color: #21262d; border-color: #58a6ff; transform: translateY(-5px); }
+.team-avatar { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 2px solid #58a6ff; }
+.team-name { font-size: 18px; font-weight: bold; color: #58a6ff; }
+.team-role { font-size: 14px; color: #c9d1d9; margin-top: 5px; padding: 2px 6px; border-radius: 5px; background-color: #21262d; display: inline-block; }
 
-    .content {
-      margin-left: 240px;
-      padding: 30px;
-      max-width: 1000px;
-    }
+/* Announcements */
+.announcement-card { display: flex; gap: 15px; background-color: #161b22; padding: 15px; border-radius: 10px; border: 1px solid #30363d; margin-bottom: 10px; align-items: center; cursor: pointer; transition: 0.3s; }
+.announcement-card:hover { background-color: #21262d; border-color: #58a6ff; transform: translateY(-3px); }
+.announcement-img { width: 100px; height: 100px; border-radius: 8px; object-fit: cover; }
+.announcement-text h3 { margin: 0 0 5px 0; color: #58a6ff; }
+.announcement-text p { margin: 0; font-size: 14px; color: #c9d1d9; }
 
-    h1, h2 {
-      color: #58a6ff;
-    }
+/* Staff Stats */
+.staff-stats { display: flex; gap: 20px; margin-top: 20px; }
+.stat-card { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 15px; flex: 1; text-align: center; transition: 0.2s; }
+.stat-card:hover { background-color: #21262d; border-color: #58a6ff; }
+.stat-number { font-size: 24px; font-weight: bold; color: #58a6ff; }
+.stat-label { font-size: 14px; color: #c9d1d9; }
 
-    /* Dashboard Banner */
-    .dashboard-banner {
-      width: 100%;
-      height: 200px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 25px;
-    }
+/* Discord Card */
+.discord-card { display: flex; align-items: center; background-color: #7289da; padding: 15px; border-radius: 10px; color: white; font-weight: bold; margin-top: 15px; text-decoration: none; transition: 0.3s; }
+.discord-card:hover { background-color: #5b6eae; transform: translateY(-3px); }
+.discord-card img { width: 40px; height: 40px; margin-right: 10px; border-radius: 50%; }
 
-    .dashboard-banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+/* External Links Accordion */
+.external-links { margin-top: 25px; }
+.accordion { background-color: #161b22; color: #c9d1d9; cursor: pointer; padding: 12px; width: 100%; border: none; text-align: left; outline: none; font-size: 16px; transition: 0.3s; border-radius: 5px; margin-bottom: 5px; }
+.accordion:hover { background-color: #21262d; color: #58a6ff; }
+.panel { padding: 0 15px; display: none; background-color: #161b22; overflow: hidden; border-left: 2px solid #58a6ff; border-radius: 0 5px 5px 0; }
 
-    /* Ownership Team */
-    .team-cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 15px;
-    }
+/* Staff Livery Cars */
+.livery-list { margin-top: 20px; background-color: #161b22; padding: 15px; border-radius: 10px; border: 1px solid #30363d; }
+.livery-list h3 { margin-top: 0; color: #58a6ff; }
+.livery-list ul { list-style: disc; padding-left: 20px; color: #c9d1d9; }
+.livery-list li { cursor: pointer; transition: 0.2s; }
+.livery-list li:hover { color: #58a6ff; transform: scale(1.05); }
 
-    .team-card {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      padding: 15px;
-      width: 180px;
-      text-align: center;
-      transition: 0.2s;
-    }
+/* Quick Links */
+.quick-links { display: flex; flex-wrap: wrap; gap: 15px; margin-top: 20px; }
+.quick-link { background-color: #161b22; border: 1px solid #30363d; border-radius: 10px; padding: 15px 20px; color: #c9d1d9; text-decoration: none; transition: 0.3s; flex: 1 1 150px; text-align: center; }
+.quick-link:hover { background-color: #21262d; border-color: #58a6ff; color: #58a6ff; }
 
-    .team-card:hover {
-      background-color: #21262d;
-      border-color: #58a6ff;
-    }
-
-    .team-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 10px;
-      border: 2px solid #58a6ff;
-    }
-
-    .team-name {
-      font-size: 18px;
-      font-weight: bold;
-      color: #58a6ff;
-    }
-
-    .team-role {
-      font-size: 14px;
-      color: #c9d1d9;
-      margin-top: 5px;
-    }
-
-    /* Announcements */
-    .announcement-card {
-      display: flex;
-      gap: 15px;
-      background-color: #161b22;
-      padding: 15px;
-      border-radius: 10px;
-      border: 1px solid #30363d;
-      margin-bottom: 10px;
-      align-items: center;
-    }
-
-    .announcement-img {
-      width: 100px;
-      height: 100px;
-      border-radius: 8px;
-      object-fit: cover;
-    }
-
-    .announcement-text h3 {
-      margin: 0 0 5px 0;
-      color: #58a6ff;
-    }
-
-    .announcement-text p {
-      margin: 0;
-      font-size: 14px;
-      color: #c9d1d9;
-    }
-
-    /* Staff Highlights */
-    .staff-stats {
-      display: flex;
-      gap: 20px;
-      margin-top: 20px;
-    }
-
-    .stat-card {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      padding: 15px;
-      flex: 1;
-      text-align: center;
-      transition: 0.2s;
-    }
-
-    .stat-card:hover {
-      background-color: #21262d;
-      border-color: #58a6ff;
-    }
-
-    .stat-number {
-      font-size: 24px;
-      font-weight: bold;
-      color: #58a6ff;
-    }
-
-    .stat-label {
-      font-size: 14px;
-      color: #c9d1d9;
-    }
-
-    /* Quick Links */
-    .quick-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .quick-link {
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 10px;
-      padding: 15px 20px;
-      color: #c9d1d9;
-      text-decoration: none;
-      transition: 0.2s;
-      flex: 1 1 150px;
-      text-align: center;
-    }
-
-    .quick-link:hover {
-      background-color: #21262d;
-      border-color: #58a6ff;
-      color: #58a6ff;
-    }
-
-    /* Punishments and Rules */
-    .tab-section {
-      display: none;
-    }
-
-    .active-section {
-      display: block;
-    }
-
-    .tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .tab {
-      padding: 10px 20px;
-      background-color: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 8px;
-      cursor: pointer;
-      color: #c9d1d9;
-      transition: 0.2s;
-    }
-
-    .tab.active {
-      background-color: #21262d;
-      border-color: #58a6ff;
-      color: #58a6ff;
-    }
-
-    .punishments-list {
-      list-style: none;
-      padding: 0;
-    }
-
-    .punishments-list li {
-      background-color: #161b22;
-      margin: 10px 0;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #30363d;
-    }
-  </style>
+</style>
 </head>
 <body>
 
@@ -249,88 +118,132 @@
 </div>
 
 <div class="content">
+<div id="dashboard" class="tab-section active-section">
 
-  <!-- Dashboard -->
-  <div id="dashboard" class="tab-section active-section">
-    <div class="dashboard-banner">
-      <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Dashboard Banner">
+  <!-- Hero Banner -->
+  <div class="dashboard-banner">
+    <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png">
+    <h1>LARP Staff Handbook</h1>
+  </div>
+
+  <!-- Ownership Team -->
+  <h2>Ownership Team</h2>
+  <div class="team-cards">
+    <div class="team-card">
+      <img src="https://i.postimg.cc/CKCVSHLg/5cedc513b0fa0fff94a51f39195867d9.png" class="team-avatar">
+      <div class="team-name">Jax</div>
+      <div class="team-role">Second Owner</div>
     </div>
-
-    <h1>LARP STAFF HANDBOOK</h1>
-    <p>Welcome to the official LARP Staff Handbook. Navigate through the sidebar to access all sections.</p>
-
-    <!-- Ownership Team -->
-    <h2>Ownership Team</h2>
-    <div class="team-cards">
-      <div class="team-card">
-        <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="NexX Avatar" class="team-avatar">
-        <div class="team-name">NexX</div>
-        <div class="team-role">Owner</div>
-      </div>
-      <div class="team-card">
-        <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Jax Avatar" class="team-avatar">
-        <div class="team-name">Jax</div>
-        <div class="team-role">Second Owner</div>
-      </div>
-      <div class="team-card">
-        <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Snakeify Avatar" class="team-avatar">
-        <div class="team-name">Snakeify</div>
-        <div class="team-role">AF</div>
-      </div>
-      <div class="team-card">
-        <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Ezy Avatar" class="team-avatar">
-        <div class="team-name">Ezy</div>
-        <div class="team-role">CF</div>
-      </div>
+    <div class="team-card">
+      <img src="https://i.postimg.cc/tT2QVq69/ba73f451830cbd4a3fc20d9dfdaf68e9.png" class="team-avatar">
+      <div class="team-name">Ezy</div>
+      <div class="team-role">CF</div>
     </div>
-
-    <!-- Announcements -->
-    <h2>Announcements</h2>
-    <div class="announcement-card">
-      <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Event" class="announcement-img">
-      <div class="announcement-text">
-        <h3>City RP Event</h3>
-        <p>Join us this Saturday for a city-wide heist RP event! Don’t miss it.</p>
-      </div>
+    <div class="team-card">
+      <img src="https://i.postimg.cc/sDBdvRDt/61dd2657928e3e3d84ac346f116a1874.png" class="team-avatar">
+      <div class="team-name">Snakeify</div>
+      <div class="team-role">AF</div>
     </div>
-
-    <div class="announcement-card">
-      <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Event" class="announcement-img">
-      <div class="announcement-text">
-        <h3>Server Update</h3>
-        <p>New vehicles and EMS roles added. Check the full patch notes in #announcements.</p>
-      </div>
+    <div class="team-card">
+      <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" class="team-avatar">
+      <div class="team-name">NexX</div>
+      <div class="team-role">Owner</div>
     </div>
+  </div>
 
-    <!-- Staff Highlights -->
-    <h2>Staff Highlights</h2>
-    <div class="staff-stats">
-      <div class="stat-card">
-        <div class="stat-number">4</div>
-        <div class="stat-label">Owners/Admins</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">10</div>
-        <div class="stat-label">Moderators</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">124</div>
-        <div class="stat-label">Players Online</div>
-      </div>
+  <!-- Announcements -->
+  <h2>Announcements</h2>
+  <div class="announcement-card" onclick="toggleAnnouncement(this)">
+    <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" class="announcement-img">
+    <div class="announcement-text">
+      <h3>City RP Event</h3>
+      <p class="extra" style="display:none;">Full details: The city-wide heist RP event starts at 8 PM server time. Make sure your IC characters are prepared and vehicles are prepped.</p>
     </div>
+  </div>
 
-    <!-- Quick Links -->
-    <h2>Quick Links</h2>
-    <div class="quick-links">
-      <a href="#" class="quick-link">In-Game Punishments</a>
-      <a href="#" class="quick-link">Discord Punishments</a>
-      <a href="#" class="quick-link">Rules</a>
-      <a href="#" class="quick-link">Staff Chat</a>
-      <a href="#" class="quick-link">Reports / Appeals</a>
+  <div class="announcement-card" onclick="toggleAnnouncement(this)">
+    <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" class="announcement-img">
+    <div class="announcement-text">
+      <h3>Server Update</h3>
+      <p class="extra" style="display:none;">Patch notes: Added new EMS vehicles, new police RP jobs, bug fixes, and performance improvements. Check Discord for details.</p>
     </div>
+  </div>
 
+  <!-- Staff Stats -->
+  <h2>Staff Highlights</h2>
+  <div class="staff-stats">
+    <div class="stat-card">
+      <div class="stat-number">4</div>
+      <div class="stat-label">Owners/Admins</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">10</div>
+      <div class="stat-label">Moderators</div>
+    </div>
+  </div>
+
+  <!-- Discord Invite -->
+  <a href="https://discord.gg/9vc6vWKH" target="_blank" class="discord-card">
+    <img src="https://i.postimg.cc/7LjDKQRP/2D67F56A-93DD-461D-A900-40FC8FF70930.png" alt="Discord">
+    Join our Discord Server
+  </a>
+
+  <!-- External Links Accordion -->
+  <h2>Important Links</h2>
+  <div class="external-links">
+    <button class="accordion">Melon Panel</button>
+    <div class="panel"><a href="https://melonly.xyz/panel/7391230818728808448" target="_blank">Access Panel (Alternative Code: TWHKSY)</a></div>
+    <button class="accordion">Staff Team Server</button>
+    <div class="panel"><a href="https://discord.gg/BMJMaMgQt" target="_blank">Join Discord</a></div>
+    <button class="accordion">Staff Handbook Document</button>
+    <div class="panel"><a href="https://docs.google.com/document/d/1974LVraSeTaSTxb5XorIvx_XznczK9cR7fl9dPCRFSw" target="_blank">View Google Doc</a></div>
+  </div>
+
+  <!-- Staff Livery Cars -->
+  <div class="livery-list">
+    <h3>Staff Livery Cars</h3>
+    <ul>
+      <li onclick="showLivery('Bullhorn Prancer Pursuit 2015')">Bullhorn Prancer Pursuit 2015</li>
+      <li onclick="showLivery('Bullhorn Prancer Pursuit 2019')">Bullhorn Prancer Pursuit 2019</li>
+    </ul>
+  </div>
+
+  <!-- Quick Links -->
+  <h2>Quick Links</h2>
+  <div class="quick-links">
+    <a href="#" class="quick-link">In-Game Punishments</a>
+    <a href="#" class="quick-link">Discord Punishments</a>
+    <a href="#" class="quick-link">Rules</a>
+    <a href="#" class="quick-link">Staff Chat</a>
+    <a href="#" class="quick-link">Reports / Appeals</a>
   </div>
 
 </div>
+</div>
+
+<script>
+// Accordion functionality
+const acc = document.getElementsByClassName("accordion");
+for (let i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    panel.style.display = panel.style.display === "block" ? "none" : "block";
+  });
+}
+
+// Toggle announcement extra text
+function toggleAnnouncement(card) {
+  const p = card.querySelector(".extra");
+  if (p.style.display === "none") { p.style.display = "block"; }
+  else { p.style.display = "none"; }
+}
+
+// Show livery alert (replace with image popup if desired)
+function showLivery(name) {
+  alert("Staff Livery Car: " + name);
+}
+</script>
+
 </body>
 </html>
