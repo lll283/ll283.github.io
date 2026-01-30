@@ -1,0 +1,25 @@
+<!-- Dashboard -->
+<div id="dashboard" class="tab-section active-section">
+  <h1>LARP STAFF HANDBOOK</h1>
+  <p>Welcome to the official LARP Staff Handbook. Use the sidebar to navigate between sections.</p>
+
+  <h2>Meet our Ownership Team</h2>
+  <div class="team-cards">
+    <div class="team-card">
+      <div class="team-name">NexX</div>
+      <div class="team-role">Owner</div>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Jax</div>
+      <div class="team-role">Second Owner</div>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Snakeify</div>
+      <div class="team-role">AF</div>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Ezy</div>
+      <div class="team-role">CF</div>
+    </div>
+  </div>
+</div>
