@@ -2,108 +2,154 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>LARP Staff Governance Manual</title>
+<title>LARP STAFF HANDBOOK</title>
 
 <style>
 :root{
---blue:#1f6feb;
---green:#2ecc71;
---red:#ff4d4d;
---bg:#0d1117;
---panel:#161b22;
---text:#c9d1d9;
---muted:#8b949e;
+--blue:#2563eb;
+--green:#22c55e;
+--red:#ef4444;
+--bg:#0b0f16;
+--panel:#121826;
+--text:#e5e7eb;
+--muted:#9ca3af;
+--gold:#facc15;
 }
 
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 
 body{
 margin:0;
-font-family:Inter,Arial,Helvetica,sans-serif;
+font-family:"Segoe UI",Inter,Arial;
 background:var(--bg);
 color:var(--text);
 }
 
 .sidebar{
+position:fixed;
+left:0;
+top:0;
 width:320px;
 height:100vh;
-position:fixed;
-background:linear-gradient(180deg,#161b22,#0d1117);
-padding:22px;
+background:linear-gradient(180deg,#0f172a,#020617);
+padding:25px;
 overflow-y:auto;
+border-right:2px solid #1e293b;
 }
 
-.sidebar img{width:100%;margin-bottom:20px}
+.sidebar img{
+width:100%;
+margin-bottom:20px;
+}
 
 .sidebar h2{
 text-align:center;
-color:var(--blue);
+color:var(--gold);
 margin-bottom:25px;
+letter-spacing:2px;
 }
 
 .sidebar a{
 display:block;
-padding:12px 15px;
+padding:12px 16px;
 margin-bottom:6px;
-color:var(--text);
 text-decoration:none;
+color:var(--text);
 border-left:4px solid transparent;
 transition:.2s;
-font-size:15px;
 }
 
 .sidebar a:hover{
-background:#1c2128;
+background:#020617;
 border-left:4px solid var(--blue);
 }
 
-.content{
+.main{
 margin-left:340px;
-padding:55px;
-max-width:1400px;
+padding:60px;
+max-width:1600px;
 }
 
-.section{margin-bottom:110px}
+section{margin-bottom:140px}
 
-.section h1{
+h1{
+font-size:54px;
 color:var(--blue);
-font-size:44px;
-margin-bottom:15px;
 }
 
-.section h2{
+h2{
+font-size:38px;
 color:var(--green);
-margin-top:55px;
-font-size:32px;
+margin-top:60px;
 }
 
-.section h3{
+h3{
+font-size:26px;
 color:var(--red);
-margin-top:35px;
-font-size:22px;
+margin-top:40px;
+}
+
+.panel{
+background:var(--panel);
+border-radius:18px;
+padding:40px;
+margin-top:30px;
+border:1px solid #1e293b;
+}
+
+.note{color:var(--muted);font-size:14px}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:40px;
+margin-top:30px;
 }
 
 .card{
-background:var(--panel);
-padding:35px;
-border-radius:16px;
-margin-top:25px;
+background:#020617;
+border-radius:20px;
+padding:25px;
+text-align:center;
+border:1px solid #1e293b;
 }
 
-ul{line-height:2.1}
-li{margin-bottom:6px}
+.card img{
+width:120px;
+height:120px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:15px;
+border:3px solid var(--blue);
+}
 
-.note{
-color:var(--muted);
-font-size:14px;
-margin-top:10px;
+.card h4{margin:10px 0 5px;font-size:20px}
+.card p{margin:0;color:var(--muted)}
+
+ul{line-height:2}
+li{margin-bottom:10px}
+
+.structure{
+font-family:"Trebuchet MS",sans-serif;
+background:linear-gradient(135deg,#020617,#0f172a);
+padding:40px;
+border-radius:18px;
+border-left:6px solid var(--gold);
+}
+
+.structure span{
+display:block;
+font-weight:bold;
+margin-top:20px;
+color:var(--gold);
+font-size:20px;
 }
 
 footer{
-margin-top:150px;
 text-align:center;
 opacity:.6;
-font-size:14px;
+margin-top:120px;
 }
 </style>
 </head>
@@ -113,393 +159,163 @@ font-size:14px;
 <div class="sidebar">
 <img src="https://i.postimg.cc/KzgB6cv8/larp-logo-removebg-preview.png">
 <h2>LARP STAFF</h2>
-
-<a href="#purpose">Purpose & Scope</a>
-<a href="#authority">Authority & Power</a>
+<a href="#intro">Introduction</a>
+<a href="#owners">Ownership</a>
 <a href="#structure">Staff Structure</a>
-<a href="#ethics">Ethics & Integrity</a>
-<a href="#operations">Operational Standards</a>
-<a href="#erlc">ER:LC Roleplay Rules</a>
-<a href="#moderation">Moderation Doctrine</a>
-<a href="#punishments">Punishment Matrix</a>
-<a href="#melonly">Melonly Logging System</a>
-<a href="#appeals">Appeals & Reviews</a>
-<a href="#activity">Activity & Availability</a>
-<a href="#discipline">Internal Discipline</a>
-<a href="#termination">Termination & Exit</a>
-<a href="#security">Security & Confidentiality</a>
+<a href="#command">Chain of Command</a>
+<a href="#responsibilities">Responsibilities</a>
+<a href="#erlc">ER:LC Rules</a>
+<a href="#punishments">Punishments</a>
+<a href="#melonly">Melonly Logging</a>
+<a href="#ost">OST</a>
 <a href="#final">Final Authority</a>
 </div>
 
-<div class="content">
+<div class="main">
 
-<div class="section" id="purpose">
-<h1>LARP Staff Governance Manual</h1>
-<div class="card">
-<p>
-This document is the <strong>sole authoritative governance manual</strong> for all staff members
-of Los Angeles Roleplay (LARP). It applies to every staff rank without exception.
-</p>
-<p>
-This system is designed for a <strong>large-scale operation exceeding 800 staff members</strong>
-and exists to enforce consistency, accountability, realism, and professionalism.
-</p>
-<p class="note">
-Claiming ignorance, misunderstanding, or personal interpretation is not a defense.
-</p>
+<section id="intro">
+<h1>LARP STAFF HANDBOOK</h1>
+<div class="panel">
+<p>This handbook governs <strong>ALL Los Angeles Roleplay staff</strong>.</p>
+<p>Failure to comply results in punishment or termination.</p>
+<p class="note">This document overrides verbal instruction.</p>
 </div>
-</div>
+</section>
 
-<div class="section" id="authority">
-<h2>Authority & Power</h2>
-<div class="card">
-<ul>
-<li><strong>Owners</strong> hold absolute authority. Their decisions are final.</li>
-<li>No staff member may override a higher rank.</li>
-<li>Emergency actions may be taken but must be logged.</li>
-<li>Abuse of authority results in immediate removal.</li>
-</ul>
+<section id="owners">
+<h2>Ownership & Board</h2>
+
+<div class="panel">
+<h3>Foundership</h3>
+<div class="grid">
+<div class="card"><img src="https://i.postimg.cc/k5Dw1mrq/nex.png"><h4>NexX</h4><p>Founder</p></div>
+<div class="card"><img src="https://i.postimg.cc/rpzgnk6k/jax.png"><h4>Jax</h4><p>Second Founder</p></div>
+<div class="card"><img src="https://i.postimg.cc/253Tcfsg/snake.png"><h4>Snakeify</h4><p>Assistant Founder</p></div>
+<div class="card"><img src="https://i.postimg.cc/nLMTRJ8f/ezy.png"><h4>EzyClapz</h4><p>Community Founder</p></div>
 </div>
 </div>
 
-<div class="section" id="structure">
+<div class="panel">
+<h3>Board of Directors</h3>
+<div class="grid">
+<div class="card"><img src="https://i.postimg.cc/Rqrj90B1/jayy.png"><h4>Jaydentm10</h4><p>Chairman</p></div>
+<div class="card"><img src="https://i.postimg.cc/DyZWby1T/jiffy.png"><h4>JiffyBoy89</h4><p>Director</p></div>
+<div class="card"><img src="https://i.postimg.cc/qMRtCMyF/leos.png"><h4>Leos</h4><p>Deputy Director</p></div>
+<div class="card"><img src="https://i.postimg.cc/23pPm5Dn/Roi.webp"><h4>Roi</h4><p>Assistant Director</p></div>
+</div>
+</div>
+</section>
+
+<section id="structure">
 <h2>Staff Structure</h2>
-<div class="card">
-<ul>
-<li>Owner</li>
-<li>Executive Administration</li>
-<li>Senior Administration</li>
-<li>Administration</li>
-<li>Moderator</li>
-<li>Trial Moderator</li>
-</ul>
-<p class="note">
-Rank does not grant immunity.
-</p>
-</div>
-</div>
+<div class="structure">
+<span>Foundership Team</span>
+Founder • Co-Founder • Assistant Founder • Assistant Co-Founder
 
-<div class="section" id="ethics">
-<h2>Ethics & Integrity</h2>
-<div class="card">
-<ul>
-<li>No favoritism, bias, or immunity</li>
-<li>No abuse of commands</li>
-<li>No retaliation against players or staff</li>
-<li>No public staff arguments</li>
-<li>No leaking internal information</li>
-<li>No bribery, corruption, or special treatment</li>
-</ul>
-</div>
-</div>
+<span>Directive Team</span>
+Chairman • Director • Deputy Director • Assistant Director
 
-<div class="section" id="operations">
-<h2>Operational Standards</h2>
-<div class="card">
-<ul>
-<li>Investigate before enforcing</li>
-<li>Use the least disruptive solution first</li>
-<li>Respect ongoing roleplay scenes</li>
-<li>Remain calm, professional, and neutral</li>
-<li>Escalate uncertainty immediately</li>
-</ul>
-</div>
-</div>
+<span>Executive Team</span>
+Executive Director • Deputy ED • Chief of Staff • Executive Officer
 
-<div class="section" id="erlc">
-<h2>ER:LC Roleplay Rules</h2>
-<div class="card">
+<span>Management Team</span>
+Head Management • Community Manager • Staff Supervisor • Senior / Junior / Trial Management
+
+<span>Internal Affairs</span>
+Director IA • Senior / Junior / Trial IA
+
+<span>Administrative Team</span>
+Head Admin • Senior / Junior / Trial Admin
+
+<span>Moderation Team</span>
+Head Mod • Senior / Junior / Trial Mod
+
+<span>Trainees</span>
+Staff Trainee
+</div>
+</section>
+
+<section id="command">
+<h2>Chain of Command</h2>
+<div class="panel">
 <ul>
-<li>No Fail Roleplay</li>
-<li>No Random Deathmatch (RDM)</li>
-<li>No Vehicle Deathmatch (VDM)</li>
-<li>No Metagaming or Powergaming</li>
-<li>No Unrealistic Driving</li>
-<li>No Exploiting or Glitch Abuse</li>
+<li>Founders — Absolute authority</li>
+<li>Board — Oversight & governance</li>
+<li>Executives — Server-wide operations</li>
+<li>Management — Staff control</li>
+<li>Internal Affairs — Investigations</li>
+<li>Administration — Punishments & logs</li>
+<li>Moderation — Player moderation</li>
+<li>Trainees — Observe only</li>
 </ul>
 </div>
-</div>
+</section>
 
-<div class="section" id="moderation">
-<h2>Moderation Doctrine</h2>
-<div class="card">
+<section id="responsibilities">
+<h2>Division Responsibilities</h2>
+<div class="panel">
 <ul>
-<li>Evidence-based enforcement only</li>
-<li>Warnings when appropriate</li>
-<li>Immediate action for severe violations</li>
-<li>Consistency across all staff</li>
-<li>Documentation required for major actions</li>
+<li><strong>Management:</strong> Promotions, demotions, inactivity</li>
+<li><strong>Internal Affairs:</strong> Corruption, abuse, appeals</li>
+<li><strong>Administration:</strong> Kicks, bans, Melonly entries</li>
+<li><strong>Moderation:</strong> Chat, minor rule enforcement</li>
 </ul>
 </div>
-</div>
+</section>
 
-<div class="section" id="punishments">
-<h2>Punishment Matrix</h2>
-<div class="card">
+<section id="erlc">
+<h2>ER:LC Core Rules</h2>
+<div class="panel">
+<ul>
+<li>No RDM / VDM</li>
+<li>No Fail RP</li>
+<li>No Metagaming</li>
+<li>No exploiting / glitch abuse</li>
+</ul>
+</div>
+</section>
+
+<section id="punishments">
+<h2>Punishments</h2>
+<div class="panel">
 <ul>
 <li>Minor → Warning / Jail</li>
-<li>Moderate → Kick / Temporary Ban</li>
-<li>Severe → Long-Term or Permanent Ban</li>
-<li>Exploiting → Immediate Permanent Ban</li>
-</ul>
-<p class="note">
-Context, intent, and history must always be considered.
-</p>
-</div>
-</div>
-
-<div class="section" id="melonly">
-<h2>Melonly Logging System</h2>
-<div class="card">
-<p>
-<strong>Melonly is the official and mandatory logging platform</strong> for Los Angeles Roleplay.
-All major staff actions must be logged accurately and truthfully.
-</p>
-<ul>
-<li>All bans must be logged on Melonly</li>
-<li>Jails exceeding standard duration must be logged</li>
-<li>Warnings contributing to escalation must be logged</li>
-<li>Evidence (screenshots or clips) is required</li>
-<li>Falsifying or omitting logs is grounds for termination</li>
-</ul>
-<p class="note">
-If it is not logged on Melonly, it did not happen.
-</p>
-</div>
-</div>
-
-<div class="section" id="appeals">
-<h2>Appeals & Reviews</h2>
-<div class="card">
-<ul>
-<li>Appeals must be respectful and evidence-based</li>
-<li>Appeals are reviewed by senior staff or owners</li>
-<li>False or malicious appeals may worsen punishment</li>
-<li>Owners retain final appeal authority</li>
+<li>Moderate → Kick / Temp Ban</li>
+<li>Severe → Permanent Ban</li>
+<li>Staff Abuse → Immediate removal</li>
 </ul>
 </div>
-</div>
+</section>
 
-<div class="section" id="activity">
-<h2>Activity & Availability</h2>
-<div class="card">
-<ul>
-<li>Minimum weekly activity required</li>
-<li>7 days inactivity → Notice</li>
-<li>14 days inactivity → Demotion review</li>
-<li>30 days inactivity → Removal</li>
-</ul>
-</div>
-</div>
-
-<div class="section" id="discipline">
-<h2>Internal Discipline</h2>
-<div class="card">
-<ul>
-<li>Verbal Warning</li>
-<li>Written Warning</li>
-<li>Strike</li>
-<li>Suspension</li>
-<li>Demotion</li>
-<li>Termination</li>
-</ul>
-</div>
-</div>
-
-<div class="section" id="termination">
-<h2>Termination & Exit</h2>
-<div class="card">
-<ul>
-<li>Immediate permission removal</li>
-<li>No retaliation or sabotage</li>
-<li>No leaking internal data</li>
-<li>Violations may be reported to platform authorities</li>
-</ul>
-</div>
-</div>
-
-<div class="section" id="security">
-<h2>Security & Confidentiality</h2>
-<div class="card">
-<ul>
-<li>Staff systems are confidential</li>
-<li>No sharing credentials or panels</li>
-<li>No screenshots of staff chats</li>
-<li>Security violations result in termination</li>
-</ul>
-</div>
-</div>
-
-<div class="section" id="final">
-<h2>Final Authority</h2>
-<div class="card">
-<p>
-Ownership reserves the right to modify this document at any time.
-Continued service implies acceptance of all revisions.
-</p>
-</div>
-</div>
-
-<footer>
-© Los Angeles Roleplay — Official Staff Governance & Operations Manual
-</footer>
-
-
-
-
-
-
-  <!DOCTYPE html>
-<html>
-<head>
-<title>Ownership & Board</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="sidebar">
-  <img src="https://i.postimg.cc/KzgB6cv8/larp-logo-removebg-preview.png">
-  <h2>LARP STAFF</h2>
-  <a href="index.html">Home</a>
-  <a href="staff-guidelines.html">Staff Guidelines</a>
-  <a href="punishments.html">Punishments</a>
-  <a href="roles.html">Ownership & Board</a>
-</div>
-
-<div class="content">
-
-<h1>Ownership, Founders & Board</h1>
-
-<!-- OWNERS -->
-<h2>Founders & Ownership</h2>
-<div class="staff-grid">
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/k5Dw1mrq/nex.png">
-    <h3>NexX</h3>
-    <p><strong>Founder</strong></p>
-    <p>Ultimate authority over Los Angeles Roleplay. Final decisions on all matters.</p>
-  </div>
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/rpzgnk6k/jax.png">
-    <h3>Jax</h3>
-    <p><strong>Second Founder</strong></p>
-    <p>Co-architect of LARP operations, policy, and strategic direction.</p>
-  </div>
-
-</div>
-
-<!-- EXECUTIVE FOUNDERS -->
-<h2>Executive Founders</h2>
-<div class="staff-grid">
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/253Tcfsg/snake.png">
-    <h3>Snakeify</h3>
-    <p><strong>AF (Assistant Founder)</strong></p>
-    <p>Oversees high-level administration, enforcement standards, and internal operations.</p>
-  </div>
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/nLMTRJ8f/ezy.png">
-    <h3>EzyClapz</h3>
-    <p><strong>CF (Community Founder)</strong></p>
-    <p>Responsible for community growth, engagement, and staff culture.</p>
-  </div>
-
-</div>
-
-<!-- BOARD -->
-<h2>Board of Directors</h2>
-<div class="staff-grid">
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/Rqrj90B1/jayy.png">
-    <h3>Jaydentm10</h3>
-    <p><strong>Chairman of the Board</strong></p>
-    <p>Leads board decisions, governance direction, and executive oversight.</p>
-  </div>
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/23pPm5Dn/Roi.webp">
-    <h3>Roi</h3>
-    <p><strong>AD (Assistant Director)</strong></p>
-    <p>Supports board leadership and oversees administrative integrity.</p>
-  </div>
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/qMRtCMyF/leos.png">
-    <h3>Leos</h3>
-    <p><strong>DD (Deputy Director)</strong></p>
-    <p>Responsible for operational enforcement and inter-department coordination.</p>
-  </div>
-
-  <div class="staff-card">
-    <img src="https://i.postimg.cc/DyZWby1T/jiffy.png">
-    <h3>JiffyBoy89</h3>
-    <p><strong>Director</strong></p>
-    <p>Handles disciplinary review, appeals oversight, and staff accountability.</p>
-  </div>
-
-</div>
-
-<footer>
-© Los Angeles Roleplay — Ownership & Board Governance
-</footer>
-
-</div>
-</body>
-</html>
-
-
-</div>
-</body>
-</html>
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>Staff Guidelines</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<div class="sidebar">
-<img src="https://i.postimg.cc/KzgB6cv8/larp-logo-removebg-preview.png">
-<h2>LARP STAFF</h2>
-<a href="index.html">Home</a>
-<a href="staff-guidelines.html">Staff Guidelines</a>
-<a href="punishments.html">Punishments</a>
-<a href="roles.html">Ownership & OST</a>
-</div>
-
-<div class="content">
-<h1>Staff Guidelines</h1>
-
-<div class="card">
-<ul>
-<li>No abuse of commands</li>
-<li>No public arguments</li>
-<li>No leaking staff information</li>
-<li>Always investigate before acting</li>
-<li>Respect ongoing roleplay</li>
-</ul>
-</div>
-
-<div class="card">
+<section id="melonly">
 <h2>Melonly Logging</h2>
+<div class="panel">
 <ul>
-<li>ALL bans logged</li>
-<li>Major jails logged</li>
-<li>Warnings leading to escalation logged</li>
-<li>If it’s not on Melonly, it didn’t happen</li>
+<li>Every punishment logged</li>
+<li>Evidence mandatory</li>
+<li>No log = invalid action</li>
 </ul>
 </div>
+</section>
 
-<footer>© LARP Governance</footer>
+<section id="ost">
+<h2>OST</h2>
+<div class="panel">
+<p>OST members follow Foundership directives and operate under IA review.</p>
+</div>
+</section>
+
+<section id="final">
+<h2>Final Authority</h2>
+<div class="panel">
+<p>Ownership may change this handbook at any time.</p>
+</div>
+</section>
+
+<footer>
+© Los Angeles Roleplay — Official Staff Handbook
+</footer>
+
 </div>
 </body>
 </html>
